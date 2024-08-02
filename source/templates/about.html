@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %} About {% endblock title %}
+
+{% block content %}
+    <div class="about-container">
+        <div class="about-textbox">
+            <section>
+                <h2>About Me</h2>
+                <p>Hello! I'm Nitz, a 24-year-old from Israel. I created this Chocobo-themed vacation tours site as part of my studies at John Bryce.</p>
+                <p>The inspiration for this site comes from the Final Fantasy series, a renowned franchise in the world of video games. Within this series, Chocobos are iconic, bird-like creatures often used as a mode of transportation across various terrains. These friendly and versatile creatures have become a beloved symbol of the series, representing adventure and exploration.</p>
+            </section>
+            
+            <section>
+                <h2>About the Website</h2>
+                <p>My website combines the whimsical theme of Chocobos with real-world vacation tours. The site features an intuitive design, allowing users to easily browse through different tour options and discover exciting destinations.</p>
+                <p>The frontend uses HTML, CSS, and JavaScript to create a visually appealing and responsive experience. The backend is powered by Python with Flask, managing user accounts, tour details, and bookings securely through a MySQL database.</p>
+            </section>
+            
+            <section>
+                <h2>Enjoy Your Visit!</h2>
+            </section>
+        </div>
+        <img src="{{ url_for('static', filename='images/Chocotours_Logo.png') }}" alt="Chocotours Logo" class="about-logo">
+    </div>
+    <a href="{{ url_for('home_view.home') }}" class="back-link"> Home</a><br>
+{% endblock content %}

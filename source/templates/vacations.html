@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}Vacations{% endblock title %}
+
+{% block content %}
+<div class="vacations-container p-3 mb-3">
+    <div class="vacations-title">
+        <h1><strong>Our vacations</strong></h1>
+    </div>
+
+    <div class="flash-message">
+        <h2 class="flash-message">{{ get_flashed_messages()[0] }}</h2>
+        
+        {% if current_user.roleId == admin %}
+        <a href="{{ url_for('vacations_view.insert') }}" class="btn btn-light d-flex justify-content-center align-items-center add-btn" role="button">
+            ➕
+        </a>
+        {% endif %}
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-start">
+        {% for v in vacations %}
+        <div class="card bg-dark text-white m-2" style="width: 18rem; position: relative;">
+            {% if v.vacation_id in user_liked_vacations %}
+            <div class="is-liked">❤️</div>
+            {% endif %}
+
+            <img src="{{ url_for('vacations_view.get_image', image_name=(v.pic_name if v.pic_name else '---')) }}" class="card-img" alt="Vacation Image">
+            
+            <div class="card-img-overlay d-flex flex-column justify-content-between">
+                <h4 class="country-name text-center">{{ v.country_id }}</h4>
+                <span class="vacation-dates position-absolute top-0 end-0 mt-2 me-2">🗓️{{ v.vacation_start }} ➡️ {{ v.vacation_end }}</span>
+
+                {% if current_user.roleId == user %}
+                <form method="post" class="d-flex justify-content-start">
+                    <input type="hidden" id="user_id" name="user_id" value="{{ current_user['userId'] }}">
+                    <input type="hidden" id="vacation_id" name="vacation_id" value="{{ v.vacation_id }}">
+                    <button type="submit" class="like-button btn btn-danger mt-auto mb-2 ms-2">❤️ {{ likes[v.vacation_id] or 0 }}</button>
+                </form>
+                {% endif %}
+
+                {% if current_user.roleId == admin %}
+                <div class="btn-group btn-group-sm" style="margin-bottom: 3px;">
+                    <a onclick="confirmation()" href="{{ url_for('vacations_view.delete', vacation_id=v.vacation_id) }}" class="btn btn-danger" title="Delete">🗑️</a>
+                    <a href="{{ url_for('vacations_view.edit', vacation_id=v.vacation_id) }}" class="btn btn-success" title="Recycle">♻️</a>
+                </div>
+                {% endif %}
+
+                <a href="{{ url_for('vacations_view.details', vacation_id=v.vacation_id) }}" class="price-button btn btn-warning w-100">${{ v.price }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

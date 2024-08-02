@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="main-content">
+    <div class="text-container">
+        <h1>Welcome to <em>Chocobo Tours</em> dear {{ current_user["firstName"]+'!' if current_user else 'Guest' }}</h1>
+        <h2>Your Gateway to <em>Magical Adventures</em></h2>
+        <p><strong>Discover the world with a touch of fantasy and whimsy.</strong></p>
+        <p>
+            Inspired by the beloved <strong>Chocobos</strong> from the <em>Final Fantasy</em> series, our tours are designed to transport you to magical destinations, much like these iconic creatures do in their fantastical world.
+        </p>
+        <p>
+            Whether you're soaring over serene landscapes or exploring vibrant cities, <em>Chocobo Tours</em> promises an experience as delightful and whimsical as the birds that inspired us.
+        </p>
+        <p><strong>Embark on a journey with us, and let your imagination take flight!</strong></p>
+    </div>
+    {% if not current_user %}
+    <div class="small-container">
+        <h4 class="centered-text">Fasten your seatbelt, please sign in or register!</h4>
+        <div class="d-flex justify-content-between">
+            <a href="{{ url_for('login_view.login') }}" class="btn btn-light btn-sm">Login</a>
+            <a href="{{ url_for('login_view.register') }}" class="btn btn-primary btn-sm">Register</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

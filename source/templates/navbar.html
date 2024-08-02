@@ -1,0 +1,33 @@
+
+<button class="offcanvas-toggle-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+    <img src="{{ url_for('static', filename='images/menu.png') }}" alt="Menu Icon">
+</button>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        {% if current_user %}
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+                <h5><a class="nav-link custom-nav-link" href="#">{{ 'Hello ' + current_user["firstName"]+'!' if current_user else 'Hello Guest!' }}</a></h5>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-nav-link" href="{{ url_for('home_view.home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-nav-link" href="{{ url_for('vacations_view.list') }}">Vacations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-nav-link" href="{{ url_for('about_view.about') }}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-nav-link" href="{{ url_for('login_view.logout') }}">Log out</a>
+            </li>
+        </ul>
+        {% endif %}
+    </div>
+</div>

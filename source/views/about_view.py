@@ -1,0 +1,9 @@
+from flask import Blueprint, render_template, session
+
+
+about_blueprint = Blueprint('about_view', __name__)
+
+
+@about_blueprint.route("/about")
+def about():
+    return render_template('about.html', current_user=session.get("current_user"))

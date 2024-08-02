@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}Add vacation{% endblock title %}
+
+{% block content %}
+<form method="post" class="forms" enctype="multipart/form-data" id="vacationForm">
+    <h1 class="form-title">New vacation</h1>
+    <div class="form-floating mb-3">
+        <select class="form-select" name="country_id" id="country_id" required>
+            <option value="" disabled selected>Select a country</option>
+            {% for country_name, country in countries.__members__.items() %}
+                <option value="{{ country.value }}">
+                    {{ country_name.replace('_', ' ') }}
+                </option>
+            {% endfor %}
+        </select>
+        <label for="country_id">Country</label>
+    </div>
+    <div class="form-floating mb-3">
+        <textarea class="form-control" name="vacation_info" id="vacation_info" placeholder="Description"></textarea>
+        <label for="vacation_info">Description</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" name="vacation_start" id="vacation_start" placeholder="vacation_start" required>
+        <label for="vacation_start">Vacation Start Date</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" name="vacation_end" id="vacation_end" placeholder="vacation_end" required>
+        <label for="vacation_end">Vacation End Date</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" name="vacation_price" id="vacation_price" placeholder="vacation_price" min="1" max="10000" required>
+        <label for="vacation_price">Price</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="file" class="form-control" name="add_image" id="add_image" accept="image/*">
+        <label for="add_image">Add Image</label>
+        <div id="image_preview" class="image-preview mt-2">
+            <img id="preview" src="" alt="Image Preview" style="display: none; max-width: 100%; height: auto;">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-warning w-100">Add</button>
+</form>
+{% endblock content %}
