@@ -51,7 +51,7 @@ class VacationFacade:
     def delete_vacation(self, vacation_id: int):
         """Method to delete a vacation"""
         self.bl.delete_vacation_by_id(vacation_id)
-        flash("Vacation has been remove.🚮", "success")
+        flash("Vacation has been removed.🚮", "success")
 
 
     def show_all_vacations(self):
