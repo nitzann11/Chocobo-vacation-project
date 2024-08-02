@@ -5,8 +5,7 @@
 {% block content %}
 <div class="main-content">
     <div class="text-container">
-        <h1>Welcome to <em>Chocobo Tours</em> dear {{ current_user["firstName"]+'!' if current_user else 'Guest' }}</h1>
-        <h2>Your Gateway to <em>Magical Adventures</em></h2>
+        <h1>Welcome to <em>Chocobo Tours</em> dear {{ current_user["firstName"] }} {{ current_user["lastName"] }}! {% if current_user %}{% else %}Guest{% endif %}</h1>        <h2>Your Gateway to <em>Magical Adventures</em></h2>
         <p><strong>Discover the world with a touch of fantasy and whimsy.</strong></p>
         <p>
             Inspired by the beloved <strong>Chocobos</strong> from the <em>Final Fantasy</em> series, our tours are designed to transport you to magical destinations, much like these iconic creatures do in their fantastical world.
