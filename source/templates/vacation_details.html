@@ -8,7 +8,7 @@
         <h1 class="details-header-style">#{{ vacation.vacation_id }} - {{ vacation.country_id }}</h1>
         <p class="details-dates-style">{{ vacation.vacation_start }} - {{ vacation.vacation_end }}</p>
         <p class="details-info-style">{{ vacation.vacation_info }}</p>
-        <img src="{{ url_for('vacations_view.get_image', image_name=(vacation.pic_name if vacation.pic_name else '---')) }}" alt="Vacation Image" height="100" width="200">
+        <img src="{{ url_for('vacations_view.get_image', image_name=(vacation.pic_name if vacation.pic_name else '---')) }}" alt="Vacation Image" height="300" width="300">
     </div>
     <img src="{{ url_for('static', filename='images/Chocotours_Logo.png') }}" class="details-logo" alt="Logo Image">
 </div>

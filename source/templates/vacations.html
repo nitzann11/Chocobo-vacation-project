@@ -42,7 +42,7 @@
                 {% if current_user.roleId == admin %}
                 <div class="btn-group btn-group-sm" style="margin-bottom: 3px;">
                     <a onclick="confirmation()" href="{{ url_for('vacations_view.delete', vacation_id=v.vacation_id) }}" class="btn btn-danger" title="Delete">🗑️</a>
-                    <a href="{{ url_for('vacations_view.edit', vacation_id=v.vacation_id) }}" class="btn btn-success" title="Recycle">♻️</a>
+                    <a href="{{ url_for('vacations_view.edit', vacation_id=v.vacation_id) }}" class="btn btn-success" title="Update">♻️</a>
                 </div>
                 {% endif %}
 
