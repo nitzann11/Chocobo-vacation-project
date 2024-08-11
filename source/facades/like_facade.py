@@ -1,6 +1,6 @@
 from flask import request, flash
 from logic.likes_logic import LikeLogic
-from models.client_error import ResourceNotFoundError, AuthError
+from models.client_error import AuthError
 from models.like import LikeModel
 
 
@@ -14,11 +14,12 @@ class LikeFacade:
         """Method to fetch a like by its user ID"""
         like_counts = self.bl.get_like_counts_for_all_vacations()
         return like_counts
-        
+
     def get_likes_using_user_id(self, user_id: int):
         """Method to fetch all likes by user ID."""
         result = self.bl.get_all_likes_by_user_id(user_id)
         return result
+
     def create_like(self):
         """Method to insert a new like into the database"""
         user_id = request.form.get('user_id', type=int)

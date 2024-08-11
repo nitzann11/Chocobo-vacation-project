@@ -5,6 +5,7 @@ from views.login_view import auth_blueprint
 from views.about_view import about_blueprint
 from utils.app_config import AppConfig
 from utils.logger import Logger
+from models.status_code import StatusCode
 
 app = Flask(__name__)
 app.secret_key = AppConfig.session_key
@@ -15,7 +16,7 @@ app.register_blueprint(auth_blueprint)
 app.register_blueprint(about_blueprint)
 
 
-@app.errorhandler(404)
+@app.errorhandler(StatusCode.NOT_FOUND.value)
 def page_not_found(error):
     Logger.log(str(error))
     return render_template("404.html")
