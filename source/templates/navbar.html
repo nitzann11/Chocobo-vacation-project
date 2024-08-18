@@ -12,7 +12,7 @@
     <div class="offcanvas-body">
         {% if current_user %}
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
+            <li class="nav-item" id="logged-user">
                 <h5><a class="nav-link custom-nav-link" href="#">{{ 'Hello ' + current_user["firstName"] + ' ' +current_user["lastName"] + '!' if current_user else 'Hello Guest!' }}</a></h5>
             </li>
             <li class="nav-item">
